@@ -16,7 +16,11 @@ import {v4 as uuid} from 'uuid';
 const app= express();
 dotenv.config();
 
-app.use(cors());
+app.use(cors(
+    {
+        origin:["http://localhost:3000","https://flipkart-clone-r64f.onrender.com"]
+    }
+));
 
 app.use(bodyParser.json({extended : true}));
 app.use(bodyParser.urlencoded({extended : true}))
