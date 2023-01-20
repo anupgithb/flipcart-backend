@@ -16,9 +16,7 @@ import {v4 as uuid} from 'uuid';
 const app= express();
 dotenv.config();
 
-app.use(cors({
-    origin:["http://localhost:3000","https://coder-blog-mern.onrender.com"]
-}));
+app.use(cors());
 
 app.use(bodyParser.json({extended : true}));
 app.use(bodyParser.urlencoded({extended : true}))
@@ -31,7 +29,7 @@ app.use('/',router);
  const USERNAME=process.env.DB_USERNAME;
  const PASSWORD=process.env.DB_PASSWORD;
 
- const URL=process.env.MONGODB_URI || `mongodb://${USERNAME}:${PASSWORD}@ac-bv5bmiv-shard-00-00.zludquf.mongodb.net:27017,ac-bv5bmiv-shard-00-01.zludquf.mongodb.net:27017,ac-bv5bmiv-shard-00-02.zludquf.mongodb.net:27017/ECOMMERCE?ssl=true&replicaSet=atlas-hvx4ex-shard-0&authSource=admin&retryWrites=true&w=majority`;
+ const URL=`${process.env.MONGODB_URI}` || `mongodb://${USERNAME}:${PASSWORD}@ac-bv5bmiv-shard-00-00.zludquf.mongodb.net:27017,ac-bv5bmiv-shard-00-01.zludquf.mongodb.net:27017,ac-bv5bmiv-shard-00-02.zludquf.mongodb.net:27017/ECOMMERCE?ssl=true&replicaSet=atlas-hvx4ex-shard-0&authSource=admin&retryWrites=true&w=majority`;
 
 
  Connection(URL);
